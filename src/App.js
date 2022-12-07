@@ -1,6 +1,14 @@
 import React, { component } from 'react';
 import './App.css';
-import Customer from './components/Customer'
+import Customer from './components/Customer';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/table';
+import TableHead from '@mui/material/TableHead';
+import TableBody from '@mui/material/TableBody';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+
+
 
 const cus = [{
   'id': '1',
@@ -30,23 +38,30 @@ const cus = [{
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <Paper>
+        <Table>
+          <TableHead>
+            <TableRow>
+            <TableCell>번호</TableCell>
+            <TableCell>이미지</TableCell>
+            <TableCell>이름</TableCell>
+            <TableCell>생일</TableCell>
+            <TableCell>성별</TableCell>
+            <TableCell>직업</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
         {
           cus.map(t => {
             return (
-            <Customer
-              key={t.id}
-              id={t.id}
-              image={t.image}
-              name={t.name}
-              birthday={t.birthday}
-              gender={t.gender}
-              job={t.job}
+            <Customer key={t.id} id={t.id} image={t.image} name={t.name} birthday={t.birthday} gender={t.gender} job={t.job}
             />
             );
           })
         }
-      </div>
+          </TableBody>
+        </Table>
+      </Paper>
     );
   }
 }
